@@ -53,6 +53,17 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+if [ "$(type -t __git_ps1)" != "function" ]; then
+    __git_ps1 ()
+    {
+        local b="$(git symbolic-ref HEAD 2>/dev/null)";
+        if [ -n "$b" ]; then
+            printf " (%s)" "${b##refs/heads/}";
+        fi
+    }
+    export -f __git_ps1
+fi
+
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[0;34m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
 else
