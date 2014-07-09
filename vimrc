@@ -60,9 +60,11 @@ colorscheme solarized
 " http://www.reinteractive.net/posts/166-awesome-vim-plugins
 
 " \b does open buffers
-nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
+nnoremap <Leader>b :Unite -buffer-name=Buffers -winheight=10 buffer<cr>
 " \n does NERDTree
 noremap <Leader>n :NERDTreeToggle<cr>
+" \f does open buffers followed by file tree
+nnoremap <leader>f :Unite -buffer-name=Files -winheight=10 buffer file<cr>
 
 set laststatus=2 " status line always visible (good for airline plugin).
 
