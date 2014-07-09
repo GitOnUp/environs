@@ -17,12 +17,6 @@ set softtabstop=4
 " Round indents to nearest multiple of 4
 set shiftround
 
-" Pretty colors
-syntax enable
-set t_Co=256
-set background=dark
-colorscheme solarized
-
 " Show 3 lines at top and bottom of screen when scrolling.
 set scrolloff=3
 " Disable line wrapping
@@ -48,6 +42,19 @@ endif
 
 " Plugin-specific bindings follow.
 execute pathogen#infect()
+
+" Pretty colors
+" These need to be after the pathogen#infect call since the scheme is installed
+" via pathogen.
+syntax enable
+set background=dark
+set t_Co=256
+let g:solarized_vimcolors=256
+if !has('gui_running')
+    let g:solarized_termcolors=&t_Co
+    let g:solarized_termtrans=1
+endif
+colorscheme solarized
 
 " credit to reInteractive for the following bindings
 " http://www.reinteractive.net/posts/166-awesome-vim-plugins
