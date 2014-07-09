@@ -2,6 +2,9 @@
 " https://github.com/csswizardry/dotfiles/blob/master/.vimrc
 " Thanks to him for providing the final push for me to learn it.
 
+filetype plugin indent on
+syntax on
+
 " Disable compatibility
 set nocompatible
 set encoding=utf-8
@@ -42,3 +45,31 @@ if exists("+colorcolumn")
     set colorcolumn=81
 endif
 
+
+" Plugin-specific bindings follow.
+execute pathogen#infect()
+
+" credit to reInteractive for the following bindings
+" http://www.reinteractive.net/posts/166-awesome-vim-plugins
+
+" \b does open buffers
+nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
+" \n does NERDTree
+noremap <Leader>n :NERDTreeToggle<cr>
+
+set laststatus=2 " status line always visible (good for airline plugin).
+
+" CtrlP-like search
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom#source('file_rec/async','sorters','sorter_rank')
+let g:unite_source_file_rec_max_cache_files = 0
+call unite#custom#source('file_mru,file_rec,file_rec/async,grepocate', 'max_candidates', 0)
+let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+" replacing ctrl-p with Unite
+nnoremap <silent> <C-p> :Unite -start-insert -buffer-name=files -winheight=10 file_rec/async<cr>
+
+let g:airline_left_sep = '●'
+let g:airline_right_sep = '●'
+let g:airline_left_alt_sep = '●'
+let g:airline_right_alt_sep = '●'
