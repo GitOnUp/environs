@@ -78,7 +78,14 @@ let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ig
 " replacing ctrl-p with Unite
 nnoremap <silent> <C-p> :Unite -start-insert -buffer-name=files -winheight=10 file_rec/async<cr>
 
-let g:airline_left_sep = '●'
-let g:airline_right_sep = '●'
-let g:airline_left_alt_sep = '●'
-let g:airline_right_alt_sep = '●'
+" Airline configuration
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+let g:airline_left_alt_sep = '▶'
+let g:airline_right_alt_sep = '◀'
+let g:airline_symbols.branch = '⎇ '
+let g:airline_symbols.linenr = '␤'
