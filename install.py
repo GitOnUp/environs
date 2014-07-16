@@ -19,6 +19,7 @@ dotfiles = [
         ('~/.bash_aliases', 'bash_aliases'),
         ('~/.profile', 'profile'),
         ('~/.vimrc', 'vimrc'),
+        ('~/.tmux.conf', 'tmux.conf'),
         ]
 
 
