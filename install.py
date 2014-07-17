@@ -10,6 +10,7 @@ import platform
 import shutil
 import subprocess
 import sys
+from urllib import urlretrieve
 
 import vimenv
 
@@ -106,10 +107,45 @@ def install_software():
             print '{} is installed.'.format(program)
 
 
+def install_powerline_fonts():
+    """
+    Install the fonts Powerline uses for glyphs and the associate conf file.
+    """
+    try:
+        _print(_status.INFO, 'Installing Powerline fonts')
+        fonts = os.path.expanduser('~/.fonts')
+        fontcfg = os.path.expanduser('~/.config/fontconfig/conf.d')
+
+        plfont = os.path.join(fonts, 'PowerlineSymbols.otf')
+        plcfg = os.path.join(fontcfg, '10-powerline-symbols.conf')
+
+        if not os.path.exists(plfont):
+            if not os.path.exists(fonts):
+                os.makedirs(fonts)
+            print 'downloading Powerline Symbols font'
+            urlretrieve('https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf',
+                        plfont)
+            cmd = ['fc-cache', '-vf', fonts]
+            subprocess.check_call(cmd)
+
+        if not os.path.exists(plcfg):
+            if not os.path.exists(fontcfg):
+                os.makedirs(fontcfg)
+            print 'downloading Powerline fontconfig'
+            urlretrieve('https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf',
+                        plcfg)
+
+    except Exception as e:
+        print 'Error during install: ' + str(e)
+        raise
+
+
+
 commands = collections.OrderedDict([
         ('software', install_software),
         ('dotfiles', install_dotfiles),
         ('vim_plugins', install_vim_plugins),
+        ('powerline_fonts', install_powerline_fonts),
     ])
 
 
