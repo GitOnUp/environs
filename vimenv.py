@@ -18,7 +18,7 @@ plugins = [
         VimPlugin('airline.vim', 'Airline', 'https://github.com/bling/vim-airline'),
         VimPlugin('fugitive.vim', 'Fugitive', 'git://github.com/tpope/vim-fugitive.git'),
         VimPlugin('vimproc.vim', 'vimproc', 'https://github.com/Shougo/vimproc.vim.git'),
-        VimPlugin('solarized.txt', 'Solarized (colors)', 'git://github.com/altercation/vim-colors-solarized.git')
+        VimPlugin('molokai', 'Molokai', 'https://github.com/tomasr/molokai.git'),
     ]
 
 _dotvim = path.expanduser('~/.vim')

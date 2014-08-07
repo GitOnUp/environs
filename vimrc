@@ -39,6 +39,8 @@ if exists("+colorcolumn")
     set colorcolumn=81
 endif
 
+" Remove |'s on vertical splits
+:set fillchars+=vert:\ " Whitespace at end is significant
 
 " Plugin-specific bindings follow.
 execute pathogen#infect()
@@ -49,12 +51,8 @@ execute pathogen#infect()
 syntax enable
 set background=dark
 set t_Co=256
-let g:solarized_vimcolors=256
-if !has('gui_running')
-    let g:solarized_termcolors=&t_Co
-    let g:solarized_termtrans=1
-endif
-colorscheme solarized
+let g:rehash256 = 1
+colorscheme molokai
 
 " credit to reInteractive for the following bindings
 " http://www.reinteractive.net/posts/166-awesome-vim-plugins
