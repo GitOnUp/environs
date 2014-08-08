@@ -67,7 +67,7 @@ nnoremap <leader>f :Unite -buffer-name=Files -winheight=10 buffer file<cr>
 set laststatus=2 " status line always visible (good for airline plugin).
 
 " CtrlP-like search
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#matcher_default#use(['matcher_glob'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#source('file_rec/async','sorters','sorter_rank')
 let g:unite_source_file_rec_max_cache_files = 0
