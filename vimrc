@@ -37,7 +37,7 @@ set title " allow setting window title
 
 set nohlsearch " don't keep search highlights after search
 set incsearch " incremental search
-set list listchars=trail:+ " show trailing whitespace as +
+set list listchars=tab:>-,trail:+ " show trailing whitespace as +
 
 set fillchars+=vert:\ " Remove | in splits (trailing whitespace significant)
 set laststatus=2 " status line always visible (good for airline plugin).
